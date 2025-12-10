@@ -275,4 +275,8 @@ internal class MyOption
     /// See: <see cref="CommandInvoker.LiveFixVttByAudio"/>.
     /// </summary>
     public bool LiveFixVttByAudio { get; set; }
+    /// <summary>
+    /// Output decrypted live stream to stdout for piping to FFmpeg
+    /// </summary>
+    public bool LivePipeStdout { get; set; }
 }

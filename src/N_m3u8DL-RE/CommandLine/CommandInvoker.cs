@@ -99,6 +99,7 @@ internal static partial class CommandInvoker
     private static readonly Option<bool> LiveRealTimeMerge = new Option<bool>("--live-real-time-merge") { Description = ResString.cmd_liveRealTimeMerge }.WithDefault(false);
     private static readonly Option<bool> LiveKeepSegments = new Option<bool>("--live-keep-segments") { Description = ResString.cmd_liveKeepSegments }.WithDefault(true);
     private static readonly Option<bool> LivePipeMux = new Option<bool>("--live-pipe-mux") { Description = ResString.cmd_livePipeMux }.WithDefault(false);
+    private static readonly Option<bool> LivePipeStdout = new Option<bool>("--live-pipe-stdout") { Description = "Output decrypted segments to stdout for piping to FFmpeg" }.WithDefault(false);
     private static readonly Option<TimeSpan?> LiveRecordLimit = new("--live-record-limit") { HelpName = "HH:mm:ss", Description = ResString.cmd_liveRecordLimit, CustomParser = ParseLiveLimit };
     private static readonly Option<int?> LiveWaitTime = new("--live-wait-time") { HelpName = "SEC", Description = ResString.cmd_liveWaitTime };
     private static readonly Option<int> LiveTakeCount = new("--live-take-count") { HelpName = "NUM", Description = ResString.cmd_liveTakeCount, DefaultValueFactory = _ => 16 };
@@ -661,6 +662,7 @@ internal static partial class CommandInvoker
             TaskStartAt = result.GetValue(TaskStartAt),
             LivePerformAsVod = result.GetValue(LivePerformAsVod),
             LivePipeMux = result.GetValue(LivePipeMux),
+            LivePipeStdout = result.GetValue(LivePipeStdout),
             LiveFixVttByAudio = result.GetValue(LiveFixVttByAudio),
             UseSystemProxy = result.GetValue(UseSystemProxy),
             CustomProxy = result.GetValue(CustomProxy),
@@ -734,7 +736,7 @@ internal static partial class CommandInvoker
             MaxSpeed,
             MuxAfterDone,
             CustomHLSMethod, CustomHLSKey, CustomHLSIv, UseSystemProxy, CustomProxy, CustomRange, TaskStartAt,
-            LivePerformAsVod, LiveRealTimeMerge, LiveKeepSegments, LivePipeMux, LiveFixVttByAudio, LiveRecordLimit, LiveWaitTime, LiveTakeCount,
+            LivePerformAsVod, LiveRealTimeMerge, LiveKeepSegments, LivePipeMux, LivePipeStdout, LiveFixVttByAudio, LiveRecordLimit, LiveWaitTime, LiveTakeCount,
             MuxImports, VideoFilter, AudioFilter, SubtitleFilter, DropVideoFilter, DropAudioFilter, DropSubtitleFilter, AdKeywords, DisableUpdateCheck, AllowHlsMultiExtMap, MoreHelp
         };
 

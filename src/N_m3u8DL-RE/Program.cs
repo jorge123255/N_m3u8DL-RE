@@ -411,6 +411,12 @@ internal class Program
             var sdm = new SimpleDownloadManager(downloadConfig, selectedStreams, extractor);
             result = await sdm.StartDownloadAsync();
         }
+        else if (option.LivePipeStdout)
+        {
+            // Live pipe to stdout - outputs decrypted segments for piping to FFmpeg
+            var lpManager = new LivePipeStreamManager(downloadConfig, selectedStreams, extractor);
+            result = await lpManager.StartStreamAsync();
+        }
         else
         {
             var sldm = new SimpleLiveRecordManager2(downloadConfig, selectedStreams, extractor);
